@@ -1,0 +1,1 @@
+A simple console based rock, paper, scissor game. Problem statement description can be found [here](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors).
