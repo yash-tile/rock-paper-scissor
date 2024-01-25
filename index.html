@@ -4,11 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game</title>
-    <!-- external js -->
-    <script src="./script.js"></script>
+    <!-- custom css -->
+   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <h3>Open console to play rock-paper-scissor</h3>
-    <button onclick="game()">Start</button>
+    <div class="container">
+        <p>Choose your move</p>
+        <div class="playerOptions">
+            <div class="playerOption" onclick="playRound('Rock')">
+                <img src="./img/hand_rock.png" alt="rock sign">
+                <p>Rock</p>
+            </div>
+            <div class="playerOption" onclick="playRound('Paper')">
+                <img src="./img/hand_paper.png" alt="paper sign">
+                <p>Paper</p>
+            </div>
+            <div class="playerOption" onclick="playRound('Scissor')">
+                <img src="./img/hand_scissor.png" alt="scissor sign">
+                <p>Scissor</p>
+            </div>
+        </div>
+
+        <!-- to display choices of players -->
+        <div class="choiceDisplay">
+            <p>Player Choice: <span id="playerChoice"></span></p>
+            <p>Computer Choice: <span id="computerChoice"></span></p>
+        </div>
+
+        <!-- to display individual round display -->
+        <p id="roundResult"></p>
+
+        <!-- to show final scores -->
+        <div class="scoreDisplay">
+            <p id="playerScore"></p>
+            <p id="computerScore"></p>
+        </div>
+
+        <!-- to show final result after 5 rounds -->
+        <p id="gameResult"></p>
+    </div>
+
+    <!-- external js -->
+    <script src="./script.js"></script>
 </body>
 </html>

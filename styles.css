@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 60%;
+    margin: 10% auto;
+    text-align: center;
+}
+
+.playerOptions{
+    display: flex;
+    margin: 2% 10%;
+    justify-content: space-around;
+}
+
+.playerOption{
+    text-align: center;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: 2px solid red;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.playerOption:hover{
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.playerOption img{
+    margin: 2px 0;
+}
+
+.choiceDisplay{
+    display: flex;
+    justify-content: space-around;
+    margin: 5% 0;
+}

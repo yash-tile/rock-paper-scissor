@@ -1,32 +1,46 @@
+const playerChoiceField = document.getElementById("playerChoice");
+const computerChoiceField = document.getElementById("computerChoice");
+const roundResultField = document.getElementById("roundResult");
+const playerScoreField = document.getElementById("playerScore");
+const computerScoreField = document.getElementById("computerScore");
+
 // to get computer's choice
 function getComputerChoice(){
-    const choices = ['rock', 'paper', 'scissor'];
+    const choices = ['Rock', 'Paper', 'Scissor'];
     const randomIndex = Math.floor(Math.random() * choices.length); //trick to get random array element.
     return choices[randomIndex];
 }
 
-// to play a single round, returns 1 if player wins the round, 0 if computer wins.
-function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toLowerCase();
-    console.log("-----------------------------");
-    console.log(`player: ${playerSelection}, computer: ${computerSelection}`);
-    let result = -1;
+
+// to be called when player selects move
+function playRound(playerSelection){
+    const computerSelection = getComputerChoice();
+
+    // set choices of player and computer to display
+    playerChoiceField.textContent = playerSelection;
+    computerChoiceField.textContent = computerSelection;
+
+    // 
+    let resultText;
     if (playerSelection === computerSelection) {
-        console.log("It's a tie round!");
+        resultText = "It's a tie round!";
     }
     else if (
-        (playerSelection === 'rock' && computerSelection === 'scissor') ||
-        (playerSelection === 'paper' && computerSelection === 'rock') ||
-        (playerSelection === 'scissor' && computerSelection === 'paper')
+        (playerSelection === 'Rock' && computerSelection === 'Scissor') ||
+        (playerSelection === 'Paper' && computerSelection === 'Rock') ||
+        (playerSelection === 'Scissor' && computerSelection === 'Paper')
     ) {
-        console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
-        result = 1;
+        resultText = `You win! ${playerSelection} beats ${computerSelection}.`;
+        let currentScore = parseInt(playerScoreField.textContent);
+        playerScoreField.textContent = ++currentScore;
+        
     } 
     else {
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
-        result = 0;
+        resultText = `You lose! ${computerSelection} beats ${playerSelection}.`;
+        let currentScore = parseInt(computerScoreField.textContent);
+        computerScoreField.textContent = ++currentScore;
     }
-    return result;
+    roundResultField.textContent = resultText;
 }
 
 // to carry out best of five game
