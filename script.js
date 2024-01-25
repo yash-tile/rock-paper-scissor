@@ -59,5 +59,3 @@ function game() {
         console.log("It's a tie in the overall game.");
     }
 }
-
-game();
