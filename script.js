@@ -1,8 +1,15 @@
+// select elements needed
 const playerChoiceField = document.getElementById("playerChoice");
 const computerChoiceField = document.getElementById("computerChoice");
 const roundResultField = document.getElementById("roundResult");
 const playerScoreField = document.getElementById("playerScore");
 const computerScoreField = document.getElementById("computerScore");
+const roundNumField = document.getElementById("roundNum");
+const gameResultField = document.getElementById("gameResult");
+
+let totalRounds;
+let currentRound = 1;
+totalRounds = parseInt(prompt("How many rounds you want to play?"));
 
 // to get computer's choice
 function getComputerChoice(){
@@ -11,6 +18,41 @@ function getComputerChoice(){
     return choices[randomIndex];
 }
 
+// to display result after n rounds based on scores
+function getGameResult(){
+    let playerScore = parseInt(playerScoreField.textContent);
+    let computerScore = parseInt(computerScoreField.textContent);
+    let gameResultText;
+    if(playerScore === computerScore){
+        gameResultText = "Game Tied!";
+    }
+    else if(playerScore > computerScore){
+        gameResultText = "Congrats, You Won!";
+    }
+    else{
+        gameResultText = "You Lost...";
+    }
+    gameResultField.textContent = gameResultText;
+    return gameResultText;
+}
+
+// playRound() calls it to update round number and if total rounds are complete then conclude game by showing result.
+function updateRound(resultText){
+    roundResultField.textContent = resultText;
+
+    // when total rounds given by user are carried out then conclude game and reset.
+    if(currentRound === totalRounds){
+        let result = getGameResult();
+        // TODO: write reset function instead of this
+        // alert(`Result: ${result}`);   
+        // window.location.reload();
+    }
+    // update round number
+    else{
+        currentRound++;
+        roundNumField.textContent = currentRound;
+    }
+}
 
 // to be called when player selects move
 function playRound(playerSelection){
@@ -20,7 +62,6 @@ function playRound(playerSelection){
     playerChoiceField.textContent = playerSelection;
     computerChoiceField.textContent = computerSelection;
 
-    // 
     let resultText;
     if (playerSelection === computerSelection) {
         resultText = "It's a tie round!";
@@ -33,43 +74,11 @@ function playRound(playerSelection){
         resultText = `You win! ${playerSelection} beats ${computerSelection}.`;
         let currentScore = parseInt(playerScoreField.textContent);
         playerScoreField.textContent = ++currentScore;
-        
     } 
     else {
         resultText = `You lose! ${computerSelection} beats ${playerSelection}.`;
         let currentScore = parseInt(computerScoreField.textContent);
         computerScoreField.textContent = ++currentScore;
     }
-    roundResultField.textContent = resultText;
-}
-
-// to carry out best of five game
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("Enter your choice: Rock, Paper or Scissor");
-        
-        const computerSelection = getComputerChoice();
-        const roundResult = playRound(playerSelection, computerSelection);
-
-        // Update scores 
-        if (roundResult === 1) {
-            playerScore++;
-        } else if (roundResult === 0) {
-            computerScore++;
-        }
-    }
-
-    // Determine the winner
-    console.log(`Player score: ${playerScore}`);
-    console.log(`Computer score: ${computerScore}`);
-    if (playerScore > computerScore) {
-        console.log("You win the game!");
-    } else if (playerScore < computerScore) {
-        console.log("You lose the game.");
-    } else {
-        console.log("It's a tie in the overall game.");
-    }
+    updateRound(resultText);
 }
