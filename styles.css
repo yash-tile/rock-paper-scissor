@@ -40,6 +40,10 @@
     margin: 5% 0;
 }
 
+.resultModal{
+    display:none;
+}
+
 #gameResult{
     font-weight: bold;
     font-size: 28px;

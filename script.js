@@ -9,7 +9,17 @@ const gameResultField = document.getElementById("gameResult");
 
 let totalRounds;
 let currentRound = 1;
-totalRounds = parseInt(prompt("How many rounds you want to play?"));
+
+// to reset scores and result
+function resetGame(){
+    roundResultField.textContent = "";
+    playerScoreField.textContent = 0;
+    computerScoreField.textContent = 0;
+    roundNumField.textContent = 1;
+    gameResultField.textContent = null;
+
+    totalRounds = parseInt(prompt("How many rounds you want to play?"));
+}
 
 // to get computer's choice
 function getComputerChoice(){
@@ -33,19 +43,15 @@ function getGameResult(){
         gameResultText = "You Lost...";
     }
     gameResultField.textContent = gameResultText;
-    return gameResultText;
 }
 
 // playRound() calls it to update round number and if total rounds are complete then conclude game by showing result.
 function updateRound(resultText){
     roundResultField.textContent = resultText;
 
-    // when total rounds given by user are carried out then conclude game and reset.
+    // when total rounds given by user are carried out then conclude game.
     if(currentRound === totalRounds){
-        let result = getGameResult();
-        // TODO: write reset function instead of this
-        // alert(`Result: ${result}`);   
-        // window.location.reload();
+        getGameResult();
     }
     // update round number
     else{
@@ -56,6 +62,14 @@ function updateRound(resultText){
 
 // to be called when player selects move
 function playRound(playerSelection){
+    console.log(currentRound, totalRounds);
+    console.log("------------------")
+    // when clicks on a move, even after game finished then restart new game
+    if(gameResultField.textContent){
+        console.log('hitt');
+        resetGame();
+    }
+
     const computerSelection = getComputerChoice();
 
     // set choices of player and computer to display
@@ -82,3 +96,6 @@ function playRound(playerSelection){
     }
     updateRound(resultText);
 }
+
+// reset values and initiate game
+resetGame();
