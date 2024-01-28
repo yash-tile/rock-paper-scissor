@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <!-- custom css -->
    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <h3>Round: <span id="roundNum"></span></h3>
+    <h2>Round: <span id="roundNum"></span></h2>
+    <p class="subhead">Choose your move</p>
     <div class="container">
-        <p>Choose your move</p>
+
+        <!-- to display individual round display -->
+        <p id="roundResult"></p>
+
         <div class="playerOptions">
             <div class="playerOption" onclick="playRound('Rock')">
                 <img src="./img/hand_rock.png" alt="rock sign">
@@ -31,9 +39,6 @@
             <p>Player Choice: <span id="playerChoice"></span></p>
             <p>Computer Choice: <span id="computerChoice"></span></p>
         </div>
-
-        <!-- to display individual round display -->
-        <p id="roundResult"></p>
 
         <!-- to show final scores -->
         <div class="scoreDisplay">

@@ -8,7 +8,7 @@ const roundNumField = document.getElementById("roundNum");
 const gameResultField = document.getElementById("gameResult");
 
 let totalRounds;
-let currentRound = 1;
+let currentRound;
 
 // to reset scores and result
 function resetGame(){
@@ -17,7 +17,7 @@ function resetGame(){
     computerScoreField.textContent = 0;
     roundNumField.textContent = 1;
     gameResultField.textContent = null;
-
+    currentRound = 1;
     totalRounds = parseInt(prompt("How many rounds you want to play?"));
 }
 
@@ -62,8 +62,7 @@ function updateRound(resultText){
 
 // to be called when player selects move
 function playRound(playerSelection){
-    console.log(currentRound, totalRounds);
-    console.log("------------------")
+
     // when clicks on a move, even after game finished then restart new game
     if(gameResultField.textContent){
         console.log('hitt');

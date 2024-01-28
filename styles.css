@@ -1,14 +1,35 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    text-align: center;
+}
+
+body{
+    background-color: #213555;
+    color: #EEF5FF;
+}
+
+h2{
+    margin-top: 3%;
 }
 
 .container{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     width: 60%;
-    margin: 10% auto;
-    text-align: center;
+    margin: 0 auto;
+    padding: 2% 0;
+    background-color: #EEF5FF;
+    color: #040D12;
+}
+
+.subhead{
+    margin: 2% 0;
+}
+
+#roundResult{
+    margin-bottom: 3%;
 }
 
 .playerOptions{
@@ -37,14 +58,16 @@
 .choiceDisplay{
     display: flex;
     justify-content: space-around;
-    margin: 5% 0;
+    margin: 3% 0;
 }
 
-.resultModal{
-    display:none;
+.scoreDisplay{
+    display: flex;
+    justify-content: space-around;
 }
 
 #gameResult{
     font-weight: bold;
-    font-size: 28px;
+    font-size: 34px;
+    margin-top: 2%;
 }
