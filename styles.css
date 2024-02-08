@@ -71,3 +71,22 @@ h2{
     font-size: 34px;
     margin-top: 2%;
 }
+
+/* for smaller screens */
+@media (max-width: 576px) {
+    .container {
+        width: 70%;
+    }
+
+    .choiceDisplay, .playerOptions, .scoreDisplay{
+        flex-direction: column; 
+        gap: 10px;
+        align-items: center;
+    }
+
+    .playerOption {
+        font-size: 18px;
+        padding: 2px;
+        width: 50%;
+    }
+}
